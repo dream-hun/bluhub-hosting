@@ -32,7 +32,7 @@ class DomainController extends Controller
             // Mock domain check result for demonstration
             $results = [
                 'domain' => $domain.'.'.$tld,
-                'available' => rand(0, 1) == 1,
+                'available' => rand(0, 1) === 1,
                 'price' => [
                     'register' => '6.99',
                     'renew' => '17.99',
@@ -45,7 +45,6 @@ class DomainController extends Controller
                 'isAvailable' => $results['available'],
                 'prices' => $results['price'],
             ]);
-
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to check domain availability');
         }

@@ -42,8 +42,7 @@ class Order extends Model
     protected static function generateOrderNumber()
     {
         $lastOrder = self::orderBy('id', 'desc')->first();
-        $orderNumber = $lastOrder ? 'ORD-'.str_pad($lastOrder->id + 1, 6, '0', STR_PAD_LEFT) : 'ORD-000001';
 
-        return $orderNumber;
+        return $lastOrder ? 'ORD-'.str_pad($lastOrder->id + 1, 6, '0', STR_PAD_LEFT) : 'ORD-000001';
     }
 }

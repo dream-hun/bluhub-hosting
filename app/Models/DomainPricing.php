@@ -29,18 +29,15 @@ class DomainPricing extends Model
     public function formattedRegistrationPrice(): Money
     {
         return Money::RWF($this->registration_price);
-
     }
 
     public function formattedRenewalPrice(): Money
     {
         return Money::RWF($this->renewal_price);
-
     }
 
     public function formattedTransferPrice(): Money
     {
         return Money::RWF($this->transfer_price);
-
     }
 }

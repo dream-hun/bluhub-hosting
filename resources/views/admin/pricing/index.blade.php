@@ -1,5 +1,5 @@
 <x-admin-layout>
-    <div class="content-wrapper" style="min-height: 1302.12px;">
+
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
@@ -21,6 +21,16 @@
         <section class="content">
             <div class="container-fluid">
                     <div class="col-md-12">
+                        @can('domain_pricing_create')
+                            <div style="margin-bottom: 10px;" class="row " >
+                                <div class="col-lg-12">
+                                    <a class="btn btn-success fa-pull-right" href="{{ route('admin.pricing.create') }}">
+                                        <span class="fa fa-plus-circle"></span>
+                                        {{ trans('global.add') }} {{ trans('cruds.domainPricing.title_singular') }}
+                                    </a>
+                                </div>
+                            </div>
+                        @endcan
 
 
                         <div class="card">
@@ -84,5 +94,5 @@
                     <!-- /.col -->
                 </div>
         </section>
-    </div>
+
 </x-admin-layout>

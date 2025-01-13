@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\DomainPricingController;
+use App\Http\Controllers\Admin\PermissionsController;
+use App\Http\Controllers\Admin\RolesController;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\DomainController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
@@ -18,5 +21,12 @@ Auth::routes();
 // Admin routes
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'is_admin'], 'as' => 'admin.'], function () {
     Route::resource('pricing', DomainPricingController::class);
+
     Route::get('/', [HomeController::class, 'index'])->name('home');
+
+    Route::resource('users', UsersController::class);
+
+    Route::resource('permissions', PermissionsController::class);
+
+    Route::resource('roles', RolesController::class);
 });

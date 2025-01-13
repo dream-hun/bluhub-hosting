@@ -18,7 +18,8 @@ class DomainPricingController extends Controller
         private readonly StoreDomainPricingAction $storeDomainPricingAction,
         private readonly UpdateDomainPricingAction $updateDomainPricingAction,
         private readonly DeleteDomainPricingAction $deleteDomainPricingAction,
-    ) {}
+    ) {
+    }
 
     public function index()
     {

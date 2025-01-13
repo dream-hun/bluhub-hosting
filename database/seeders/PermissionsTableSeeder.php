@@ -11,111 +11,111 @@ class PermissionsTableSeeder extends Seeder
     {
         $permissions = [
             [
-                'id'    => 1,
+                'id' => 1,
                 'title' => 'user_management_access',
             ],
             [
-                'id'    => 2,
+                'id' => 2,
                 'title' => 'permission_create',
             ],
             [
-                'id'    => 3,
+                'id' => 3,
                 'title' => 'permission_edit',
             ],
             [
-                'id'    => 4,
+                'id' => 4,
                 'title' => 'permission_show',
             ],
             [
-                'id'    => 5,
+                'id' => 5,
                 'title' => 'permission_delete',
             ],
             [
-                'id'    => 6,
+                'id' => 6,
                 'title' => 'permission_access',
             ],
             [
-                'id'    => 7,
+                'id' => 7,
                 'title' => 'role_create',
             ],
             [
-                'id'    => 8,
+                'id' => 8,
                 'title' => 'role_edit',
             ],
             [
-                'id'    => 9,
+                'id' => 9,
                 'title' => 'role_show',
             ],
             [
-                'id'    => 10,
+                'id' => 10,
                 'title' => 'role_delete',
             ],
             [
-                'id'    => 11,
+                'id' => 11,
                 'title' => 'role_access',
             ],
             [
-                'id'    => 12,
+                'id' => 12,
                 'title' => 'user_create',
             ],
             [
-                'id'    => 13,
+                'id' => 13,
                 'title' => 'user_edit',
             ],
             [
-                'id'    => 14,
+                'id' => 14,
                 'title' => 'user_show',
             ],
             [
-                'id'    => 15,
+                'id' => 15,
                 'title' => 'user_delete',
             ],
             [
-                'id'    => 16,
+                'id' => 16,
                 'title' => 'user_access',
             ],
             [
-                'id'    => 17,
+                'id' => 17,
                 'title' => 'setting_create',
             ],
             [
-                'id'    => 18,
+                'id' => 18,
                 'title' => 'setting_edit',
             ],
             [
-                'id'    => 19,
+                'id' => 19,
                 'title' => 'setting_show',
             ],
             [
-                'id'    => 20,
+                'id' => 20,
                 'title' => 'setting_delete',
             ],
             [
-                'id'    => 21,
+                'id' => 21,
                 'title' => 'setting_access',
             ],
             [
-                'id'    => 22,
+                'id' => 22,
                 'title' => 'domain_pricing_create',
             ],
             [
-                'id'    => 23,
+                'id' => 23,
                 'title' => 'domain_pricing_edit',
             ],
             [
-                'id'    => 24,
+                'id' => 24,
                 'title' => 'domain_pricing_show',
             ],
             [
-                'id'    => 25,
+                'id' => 25,
                 'title' => 'domain_pricing_delete',
             ],
             [
-                'id'    => 26,
+                'id' => 26,
                 'title' => 'domain_pricing_access',
             ],
             [
-                'id'    => 27,
+                'id' => 27,
                 'title' => 'profile_password_edit',
             ],
         ];

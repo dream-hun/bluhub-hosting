@@ -43,6 +43,7 @@ class Setting extends Model
      * Get the settings
      *
      * @param  string|array  $keys
+     *
      * @return mixed
      */
     public static function get($keys)
@@ -61,6 +62,7 @@ class Setting extends Model
      *
      * @param  string  $key
      * @param  mixed  $value
+     *
      * @return bool
      */
     public static function set($key, $value)

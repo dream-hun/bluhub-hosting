@@ -1,5 +1,4 @@
 <x-admin-layout>
-    <div class="content-wrapper" style="min-height: 760px;">
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
@@ -97,5 +96,5 @@
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->
-    </div>
+
 </x-admin-layout>
