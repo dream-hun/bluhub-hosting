@@ -6,8 +6,8 @@
                 <!-- widget -->
                 <div class="col-lg-3 col-md-5 col-sm-6 rts-footer__widget--column">
                     <div class="rts-footer__widget footer__widget w-280">
-                        <a href="index.html" aria-label="main page link" class="footer__logo">
-                            <img src="assets/images/logo/footer__one__logo.svg" alt="">
+                        <a href="{{route('home')}}" aria-label="main page link" class="footer__logo">
+                            <img src="{{ asset('assets/logo.webp') }}" alt="">
                         </a>
                         <p class="brand-desc">We’re on a mission make life easier for web developers & small businesses.
                         </p>
@@ -48,7 +48,7 @@
                         <h5 class="widget-title">Feature</h5>
                         <div class="rts-footer__widget--menu ">
                             <ul>
-                                <li><a href="domain-checker.html">Domain Checker</a></li>
+                                <li><a href="{{route('domains.index')}}">Domain Checker</a></li>
                                 <li><a href="domain-transfer.html">Domain Transfer</a></li>
                                 <li><a href="domain-registration.html">Domain Registration</a></li>
                                 <li><a href="data-centers.html">Data Centers</a></li>

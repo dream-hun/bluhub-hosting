@@ -33,9 +33,9 @@
              <div class="rts-header__wrapper">
                  <!-- FOR LOGO -->
                  <div class="rts-header__logo">
-                     <a href="index.html" class="site-logo">
-                         <img class="logo-white" src="assets/images/logo/logo-1.svg" alt="Hostie">
-                         <img class="logo-dark" src="assets/images/logo/logo-4.svg" alt="Hostie">
+                     <a href="{{route('home')}}" class="site-logo">
+                         <img class="logo-white" src="{{ asset('assets/logo.webp') }}" alt="{{config('app.name')}}">
+                         <img class="logo-dark" src="{{ asset('assets/logo.webp') }}" alt="{{config('app.name')}}">
                      </a>
                  </div>
                  <!-- FOR NAVIGATION MENU -->
