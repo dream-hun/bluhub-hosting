@@ -13,45 +13,16 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            // Company Information
-            $table->string('company_name')->nullable();
-            $table->string('company_logo')->nullable();
-            $table->text('company_description')->nullable();
-
-            // Contact Information
-            $table->string('email')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('alternative_phone')->nullable();
+            $table->string('site_name')->unique();
+            $table->string('email');
+            $table->string('phone');
+            $table->string('address')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('youtube')->nullable();
             $table->string('whatsapp')->nullable();
-
-            // Address Information
-            $table->string('address_line1')->nullable();
-            $table->string('address_line2')->nullable();
-            $table->string('city')->nullable();
-            $table->string('state')->nullable();
-            $table->string('country')->nullable();
-            $table->string('postal_code')->nullable();
-
-            // Social Media Links
-            $table->string('facebook_url')->nullable();
-            $table->string('twitter_url')->nullable();
-            $table->string('instagram_url')->nullable();
-            $table->string('linkedin_url')->nullable();
-            $table->string('youtube_url')->nullable();
-
-            // Additional Information
-            $table->string('working_hours')->nullable();
-            $table->text('google_maps_embed')->nullable();
-            $table->string('google_analytics_id')->nullable();
-
-            // SEO Information
-            $table->string('meta_title')->nullable();
-            $table->text('meta_description')->nullable();
-            $table->text('meta_keywords')->nullable();
-
-            // Footer Information
-            $table->text('footer_text')->nullable();
-            $table->text('copyright_text')->nullable();
 
             $table->timestamps();
         });

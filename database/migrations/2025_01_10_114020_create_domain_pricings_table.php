@@ -15,9 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('tld')->unique();
             $table->integer('registration_price');
-            $table->integer('renewal_price');
-            $table->integer('transfer_price');
-            $table->integer('grace_period')->nullable();
+            $table->integer('renewal_price')->nullable();
+            $table->integer('transfer_price')->nullable();
+            $table->integer('whois_privacy_price')->nullable();
+            $table->integer('min_registration_years')->nullable();
+            $table->integer('max_registration_years')->nullable();
+            $table->boolean('is_active')->default(0)->nullable();
             $table->timestamps();
         });
     }

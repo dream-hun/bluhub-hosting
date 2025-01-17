@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('domains', function (Blueprint $table) {
             $table->id();
-            $table->string('domain')->unique();
+            $table->string('domain');
             $table->string('tld');
             $table->string('status')->default('active');
             $table->timestamp('registered_at')->nullable();
@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('auto_renew')->nullable()->default('true');
             $table->string('auth_code')->nullable();
             $table->foreignId('domain_pricing_id')->constrained()->cascadeOnDelete();
-            $table->timestamp('expires_at')->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

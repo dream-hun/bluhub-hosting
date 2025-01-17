@@ -2,71 +2,65 @@
 
 namespace App\Models;
 
+use DateTimeInterface;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Setting extends Model
+class Setting extends Model implements HasMedia
 {
+    use HasFactory, InteractsWithMedia;
+
+    public $table = 'settings';
+
+    protected $appends = [
+        'logo',
+    ];
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
     protected $fillable = [
-        'company_name',
-        'company_logo',
-        'company_description',
+        'site_name',
         'email',
         'phone',
-        'alternative_phone',
+        'address',
+        'facebook',
+        'twitter',
+        'instagram',
+        'linkedin',
+        'youtube',
         'whatsapp',
-        'address_line1',
-        'address_line2',
-        'city',
-        'state',
-        'country',
-        'postal_code',
-        'facebook_url',
-        'twitter_url',
-        'instagram_url',
-        'linkedin_url',
-        'youtube_url',
-        'working_hours',
-        'google_maps_embed',
-        'google_analytics_id',
-        'meta_title',
-        'meta_description',
-        'meta_keywords',
-        'footer_text',
-        'copyright_text',
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
-    protected $casts = [
-        'meta_keywords' => 'array',
-    ];
-
-    /**
-     * Get the settings
-     *
-     * @param  string|array  $keys
-     *
-     * @return mixed
-     */
-    public static function get($keys)
+    protected function serializeDate(DateTimeInterface $date)
     {
-        if (is_array($keys)) {
-            return self::whereIn('key', $keys)->pluck('value', 'key');
-        }
-
-        $setting = self::where('key', $keys)->first();
-
-        return $setting ? $setting->value : null;
+        return $date->format('Y-m-d H:i:s');
     }
 
-    /**
-     * Set the setting
-     *
-     * @param  string  $key
-     * @param  mixed  $value
-     *
-     * @return bool
-     */
-    public static function set($key, $value)
+    public function registerMediaConversions(?Media $media = null): void
     {
-        return self::updateOrCreate(['key' => $key], ['value' => $value]);
+        $this->addMediaConversion('thumb')->fit('crop', 50, 50);
+        $this->addMediaConversion('preview')->fit('crop', 120, 120);
+    }
+
+    public function getLogoAttribute()
+    {
+        $file = $this->getMedia('logo')->last();
+        if ($file) {
+            $file->url = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview = $file->getUrl('preview');
+        }
+
+        return $file;
     }
 }

@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\DomainPricing\DeleteDomainPricingAction;
-use App\Actions\DomainPricing\StoreDomainPricingAction;
-use App\Actions\DomainPricing\UpdateDomainPricingAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreDomainPricingRequest;
 use App\Http\Requests\Admin\UpdateDomainPricingRequest;
@@ -14,52 +11,56 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DomainPricingController extends Controller
 {
-    public function __construct(
-        private readonly StoreDomainPricingAction $storeDomainPricingAction,
-        private readonly UpdateDomainPricingAction $updateDomainPricingAction,
-        private readonly DeleteDomainPricingAction $deleteDomainPricingAction,
-    ) {
-    }
-
     public function index()
     {
         abort_if(Gate::denies('domain_pricing_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $pricing = DomainPricing::all();
 
-        return view('admin.pricing.index', ['pricing' => $pricing]);
+        $domainPricings = DomainPricing::all();
+
+        return view('admin.domainPricings.index', compact('domainPricings'));
     }
 
     public function create()
     {
-        return view('admin.pricing.create');
+        abort_if(Gate::denies('domain_pricing_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        return view('admin.domainPricings.create');
     }
 
     public function store(StoreDomainPricingRequest $request)
     {
-        $this->storeDomainPricingAction->execute($request->validated());
+        $domainPricing = DomainPricing::create($request->all());
 
-        return redirect()->route('admin.pricing.index')
-            ->with('success', 'Domain pricing created successfully.');
+        return redirect()->route('admin.domain-pricings.index');
     }
 
-    public function edit(DomainPricing $pricing)
+    public function edit(DomainPricing $domainPricing)
     {
-        return view('admin.pricing.edit', ['pricing' => $pricing]);
+        abort_if(Gate::denies('domain_pricing_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        return view('admin.domainPricings.edit', compact('domainPricing'));
     }
 
-    public function update(UpdateDomainPricingRequest $request, DomainPricing $pricing)
+    public function update(UpdateDomainPricingRequest $request, DomainPricing $domainPricing)
     {
-        $this->updateDomainPricingAction->execute($pricing, $request->validated());
+        $domainPricing->update($request->all());
 
-        return redirect()->route('admin.pricing.index')
-            ->with('success', 'Domain pricing updated successfully.');
+        return redirect()->route('admin.domain-pricings.index');
     }
 
-    public function destroy(DomainPricing $pricing)
+    public function show(DomainPricing $domainPricing)
     {
-        $this->deleteDomainPricingAction->execute($pricing);
+        abort_if(Gate::denies('domain_pricing_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return redirect()->route('admin.pricing.index')
-            ->with('success', 'Domain pricing deleted successfully.');
+        return view('admin.domainPricings.show', compact('domainPricing'));
+    }
+
+    public function destroy(DomainPricing $domainPricing)
+    {
+        abort_if(Gate::denies('domain_pricing_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $domainPricing->delete();
+
+        return back();
     }
 }

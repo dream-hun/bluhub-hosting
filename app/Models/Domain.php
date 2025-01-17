@@ -2,12 +2,25 @@
 
 namespace App\Models;
 
+use App\Models\Traits\DomainDateFormating;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Domain extends Model
 {
+    use DomainDateFormating;
+
+    public const AUTO_RENEW_RADIO = [
+        'true' => 'Auto Renew',
+        'false' => 'Disabled',
+    ];
+
+    public const STATUS_RADIO = [
+        'active' => 'Active',
+        'not-active' => 'Not Active',
+    ];
+
     protected $fillable = [
         'domain',
         'tld',
@@ -19,7 +32,6 @@ class Domain extends Model
         'auto_renew',
         'auth_code',
         'domain_pricing_id',
-        'expires_at',
         'user_id',
     ];
 
@@ -27,7 +39,6 @@ class Domain extends Model
         'registered_at' => 'datetime',
         'expiration_date' => 'datetime',
         'transfer_date' => 'datetime',
-        'expires_at' => 'datetime',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
