@@ -14,11 +14,13 @@ class DomainPricing extends Model
         'renewal_price',
         'transfer_price',
         'grace_period',
+        'is_active',
     ];
 
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
+        'is_active' => 'boolean',
     ];
 
     public function domain(): HasMany

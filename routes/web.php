@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Auth\ChangePasswordController;
+use App\Http\Controllers\DomainController;
+use App\Http\Controllers\EppController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
@@ -14,8 +16,11 @@ Auth::routes();
 
 // Public routes
 Route::get('/', IndexController::class)->name('home');
-Route::get('search', [\App\Http\Controllers\SearchDomainController::class, 'index'])->name('domains.index');
-Route::post('search', [\App\Http\Controllers\SearchDomainController::class, 'search'])->name('domains.search');
+
+Route::prefix('domains')->group(function () {
+    Route::get('/', [EppController::class, 'index'])->name('domains.index');
+    Route::post('/search', [EppController::class, 'search'])->name('domains.search');
+   });
 
 // Admin routes
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'is_admin'], 'as' => 'admin.'], function () {

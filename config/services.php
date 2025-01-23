@@ -35,4 +35,13 @@ return [
         ],
     ],
 
+    'epp' => [
+        'username' => env('EPP_USERNAME', 'bluhub_rwf'),
+        'password' => env('EPP_PASSWORD'),
+        'server' => env('EPP_SERVER', 'registry.ricta.org.rw'),
+        'port' => env('EPP_PORT', 700),
+        'certificate' => env('EPP_CERTIFICATE', storage_path('app/Certificate/test.pem')),
+        'ssl' => env('EPP_SSL', true),
+    ],
+
 ];
